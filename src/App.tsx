@@ -1,9 +1,7 @@
+import Routers from "./routers/Routers";
+
 const App = () => {
-  return (
-    <div>
-      <p className="text-red-500">Travly App</p>
-    </div>
-  );
+  return <Routers />;
 };
 
 export default App;
