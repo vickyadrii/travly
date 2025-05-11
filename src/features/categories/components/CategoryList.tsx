@@ -10,8 +10,6 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
-import { Button } from "@/components/ui/button";
-import { Link } from "react-router";
 
 
 type Props = {
@@ -31,7 +29,6 @@ const CategoryList = ({ list, onPageChange }: Props) => {
           <TableRow>
             <TableHead>Nama Category</TableHead>
             <TableHead>Tanggal Dibuat</TableHead>
-            <TableHead>Aksi</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -39,11 +36,6 @@ const CategoryList = ({ list, onPageChange }: Props) => {
             <TableRow key={category.documentId}>
               <TableCell className="font-bold">{category?.name}</TableCell>
               <TableCell>{dayjs(category?.publishedAt).format("DD MMMM YYYY")}</TableCell>
-              <TableCell>
-                <Button asChild variant="ghost">
-                  <Link to={`/categories/${category.documentId}`}>Lihat Detail</Link>
-                </Button>
-              </TableCell>
             </TableRow>
           ))}
         </TableBody>
