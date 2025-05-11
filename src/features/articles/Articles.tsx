@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import type { Article } from "./types";
 import type { Meta } from "@/types";
 import { Spin } from "@/components/ui/spin";
+import { useLocation } from "react-router";
 
 export type List = {
   data?: Article[];
@@ -12,8 +13,13 @@ export type List = {
 
 const Articles = () => {
   const [list, setList] = useState<List>({});
-  const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+
+  const page = Number(searchParams.get("page")) || 1;
+  const pageSize = Number(searchParams.get("pageSize")) || 5;
 
   const getArticles = useCallback(async () => {
     try {
@@ -22,7 +28,7 @@ const Articles = () => {
         params: {
           populate: "*",
           "pagination[page]": page,
-          "pagination[pageSize]": 5,
+          "pagination[pageSize]": pageSize,
         },
       });
       setList(res);
@@ -31,11 +37,7 @@ const Articles = () => {
     } finally {
       setIsLoading(false);
     }
-  }, [page]);
-
-  const handleOnChange = (newPage: number) => {
-    setPage(newPage)
-  }
+  }, [page, pageSize]);
 
   useEffect(() => {
     getArticles();
@@ -48,7 +50,7 @@ const Articles = () => {
           <Spin />
         </div>
       ) : (
-        <ArticleList list={list} onPageChange={handleOnChange} />
+        <ArticleList list={list} />
       )}
     </div>
   );

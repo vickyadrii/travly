@@ -1,4 +1,4 @@
-import { BookOpen, ChartBar, MessageCircle } from "lucide-react";
+import { BookOpen, ChartBar } from "lucide-react";
 
 export const SidebarItems = [
   {
@@ -6,11 +6,11 @@ export const SidebarItems = [
     href: "/articles",
     icon: BookOpen,
   },
-  {
-    label: "Komentar",
-    href: "/comments",
-    icon: MessageCircle,
-  },
+  // {
+  //   label: "Komentar",
+  //   href: "/comments",
+  //   icon: MessageCircle,
+  // },
   {
     label: "Kategori Artikel",
     href: "/categories",

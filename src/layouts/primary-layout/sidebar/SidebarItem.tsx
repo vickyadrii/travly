@@ -5,7 +5,7 @@ import type { SidebarItemType } from "@/types";
 
 export const SidebarItem = ({ label, href, icon }: SidebarItemType) => {
   const location = useLocation();
-  const isActiveSidebar = location.pathname === href;
+  const isActiveSidebar = location.pathname.includes(href);
 
   return (
     <div>

@@ -12,7 +12,7 @@ const AuthLayout = () => {
       <div className="flex flex-col items-center gap-4 w-full">
         <div className="flex items-center gap-2">
           <img
-            src="/assets/images/logo.webp"
+            src="/assets/images/logo.png"
             alt="travel logo, copyright by vecteezy.com"
             className="w-12 h-12 object-cover"
           />

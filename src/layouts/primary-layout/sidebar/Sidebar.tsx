@@ -17,7 +17,7 @@ export const Sidebar = ({ className }: Props) => {
         <div className="flex px-4 py-3 border-b w-full">
           <Link to="/" className="flex items-center justify-center gap-2">
             <img
-              src="/assets/images/logo.webp"
+              src="/assets/images/logo.png"
               alt="travel logo, copyright by vecteezy.com"
               className="w-12 h-12 object-cover"
             />

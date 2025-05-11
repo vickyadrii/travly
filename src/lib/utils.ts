@@ -16,9 +16,15 @@ export const setAccessToken = (token: string) => {
 
 export const getAccessToken = () => {
   const token = Cookie.get(cookieKey);
-  return token ?? '';
+  return token ?? "";
 };
 
 export const removeAccessToken = () => {
   Cookie.remove(cookieKey);
+};
+
+export const copyToClipboard = (text: string) => {
+  const fixedUrl = text.replace(/(localhost:5173)\/\//, "$1/");
+
+  navigator.clipboard.writeText(fixedUrl);
 };

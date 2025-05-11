@@ -12,7 +12,7 @@ const PrimaryLayout = () => {
       <Sidebar className="hidden lg:flex" />
       <div className="lg:pl-64 h-full pt-14 lg:pt-0">
         <Header />
-        <div className="h-full p-5">
+        <div className="p-5">
           <Outlet />
           <Toaster />
         </div>

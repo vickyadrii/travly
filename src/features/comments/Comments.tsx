@@ -1,10 +1,10 @@
 import { api } from "@/configs";
 import CommentList from "./components/CommentList";
 import { useCallback, useEffect, useState } from "react";
-import type { Comment } from "./types";
 import type { Meta } from "@/types";
 import { Spin } from "@/components/ui/spin";
 import { useLocation } from "react-router";
+import type { Comment } from "../articles/types";
 
 export type List = {
   data?: Comment[];

@@ -1,26 +1,21 @@
 import dayjs from "dayjs";
 import type { List } from "../Articles";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import {
-  Pagination,
-  PaginationContent,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "@/components/ui/pagination";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
+import { PaginationWithLinks } from "@/components/ui/pagination-with-links";
 
 type Props = {
   list: List;
-  onPageChange: (page: number) => void;
 };
 
-const ArticleList = ({ list, onPageChange }: Props) => {
+const ArticleList = ({ list }: Props) => {
   const { data, meta } = list;
-  const page = meta?.pagination?.page ?? 1;
-  const pageCount = meta?.pagination?.pageCount ?? 1;
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+
+  const page = Number(searchParams.get("page")) || 1;
+  const pageSize = Number(searchParams.get("pageSize")) || meta?.pagination.pageSize || 5;
 
   return (
     <>
@@ -52,7 +47,7 @@ const ArticleList = ({ list, onPageChange }: Props) => {
               <TableCell>{article?.user?.username}</TableCell>
               <TableCell>{dayjs(article?.publishedAt).format("DD MMMM YYYY")}</TableCell>
               <TableCell>
-                <Button asChild variant='ghost'>
+                <Button asChild variant="ghost">
                   <Link to={`/articles/${article.documentId}`}>Lihat Detail</Link>
                 </Button>
               </TableCell>
@@ -61,28 +56,7 @@ const ArticleList = ({ list, onPageChange }: Props) => {
         </TableBody>
       </Table>
 
-      <Pagination>
-        <PaginationContent>
-          <PaginationItem>
-            <PaginationPrevious href="#" onClick={() => onPageChange(Math.max(1, page - 1))} />
-          </PaginationItem>
-
-          {[...Array(pageCount)].map((_, index) => {
-            const currentPage = index + 1;
-            return (
-              <PaginationItem key={currentPage}>
-                <PaginationLink href="#" isActive={currentPage === page} onClick={() => onPageChange(currentPage)}>
-                  {currentPage}
-                </PaginationLink>
-              </PaginationItem>
-            );
-          })}
-
-          <PaginationItem>
-            <PaginationNext href="#" onClick={() => onPageChange(Math.min(page + 1, pageCount))} />
-          </PaginationItem>
-        </PaginationContent>
-      </Pagination>
+      <PaginationWithLinks page={page} pageSize={pageSize} totalCount={meta?.pagination?.total ?? 0} />
     </>
   );
 };

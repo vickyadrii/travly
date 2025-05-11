@@ -1,3 +1,5 @@
+import type { Category } from "../categories/types";
+
 export type User = {
   id: number;
   documentId: string;
@@ -8,15 +10,28 @@ export type User = {
   blocked: boolean;
 };
 
+export type Comment = {
+  id?: number;
+  documentId?: string;
+  content?: string;
+  createdAt?: Date;
+  updatedAt?: Date;
+  publishedAt?: Date;
+  locale?: null;
+  user?: User;
+};
+
 export type Article = {
-  cover_image_url: string;
-  createdAt: Date;
-  description: string;
-  documentId: string;
-  id: number;
-  locale: unknown | null;
-  user: User;
-  publishedAt: Date;
-  title: string;
-  updatedAt: Date;
+  category?: Category;
+  comments?: Comment[] | [];
+  cover_image_url?: string;
+  createdAt?: Date;
+  description?: string;
+  documentId?: string;
+  id?: number;
+  locale?: unknown | null;
+  user?: User;
+  publishedAt?: Date;
+  title?: string;
+  updatedAt?: Date;
 };
