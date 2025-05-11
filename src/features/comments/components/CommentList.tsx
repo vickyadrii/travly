@@ -35,7 +35,7 @@ const CommentList = ({ list }: Props) => {
             <TableRow key={comment.documentId}>
               <TableCell className="font-bold">{comment?.content}</TableCell>
               <TableCell>{dayjs(comment?.publishedAt).format("DD MMMM YYYY")}</TableCell>
-              <TableCell>{comment.user.username}</TableCell>
+              <TableCell>{comment?.user?.username ?? ''}</TableCell>
               <TableCell>
                 <Button asChild variant="ghost">
                   <Link to={`/comments/${comment.documentId}`}>Lihat Detail</Link>
