@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { SidebarItems } from "@/constants";
 
 import { SidebarItem } from "./SidebarItem";
+import SignOut from "./SignOut";
 
 type Props = {
   className?: string;
@@ -28,6 +29,7 @@ export const Sidebar = ({ className }: Props) => {
           {SidebarItems.map((data, index) => (
             <SidebarItem key={index} icon={<data.icon />} href={data.href} label={data.label} />
           ))}
+          <SignOut />
         </div>
       </div>
     </div>
