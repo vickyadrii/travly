@@ -61,7 +61,7 @@ const SignInForm = () => {
       toast.success("Login successfully!");
 
       setTimeout(() => {
-        navigate("/dashboard");
+        navigate("/articles");
       }, 750);
     } catch (error) {
       const err = error as ResponseErrorJSON;

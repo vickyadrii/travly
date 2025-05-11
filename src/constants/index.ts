@@ -1,14 +1,19 @@
-import { BookOpen, ChartPie } from "lucide-react";
+import { BookOpen } from "lucide-react";
 
 export const SidebarItems = [
   {
-    label: "Dashboard",
-    href: "/dashboard",
-    icon: ChartPie,
-  },
-  {
     label: "Articles",
     href: "/articles",
+    icon: BookOpen,
+  },
+  {
+    label: "Comments",
+    href: "/comments",
+    icon: BookOpen,
+  },
+  {
+    label: "Categories",
+    href: "/categories",
     icon: BookOpen,
   },
 ];

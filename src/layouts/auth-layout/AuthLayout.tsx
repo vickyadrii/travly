@@ -6,7 +6,7 @@ const AuthLayout = () => {
   const jwtToken = getAccessToken();
 
   return jwtToken ? (
-    <Navigate to="/dashboard" />
+    <Navigate to="/articles" />
   ) : (
     <div className="h-screen flex items-center justify-center">
       <div className="flex flex-col items-center gap-4 w-full">
