@@ -112,7 +112,7 @@ const SignInForm = () => {
           </div>
 
           <div className="flex justify-end">
-            <Button size="lg" type="submit">
+            <Button disabled={isLoading} size="lg" type="submit">
               {isLoading ? <Spin /> : "Submit"}
             </Button>
           </div>
