@@ -19,13 +19,13 @@ Make sure you have installed the following prerequisites before proceeding:
 
 1. Clone this repository to your local machine:
 
-   `git clone https://github.com/vickyadriitravly.git`
+   `git clone https://github.com/vickyadrii/travly.git`
 
 2. Navigate to the project directory:
 
    `cd travly`
 
-3. Install all the required dependencies using npm or yarn or pnpm:
+3. Install all the required dependencies using npm, yarn, or pnpm:
    ```bash
    npm install
    # or
@@ -47,6 +47,22 @@ Start the server:
 
 ```
 
+## Structure Folder
+Here is the project structure folder.
+
+```src
+├───app         # Default feature pages by Next.js.
+├───components  # All Reusable components
+├───configs     # Axios instance
+├───constants   # mocks data (dummy data).
+├───features    # Store feature components.
+├───layouts     # Store primary and auth layouts.
+├───lib         # Utility functions.
+├───pages       # All pages.
+├───routers     # All routes (Public, Private and a guard)
+├───types       # Put in typescript types and interfaces.
+```
+
 ## Built With
 
 - [React](https://react.dev/) - React library for building user interface
@@ -56,3 +72,5 @@ Start the server:
 - [Shadcn UI](https://ui.shadcn.com/) - Library that can be used to create dynamic components.
 
 ## Preview
+<img width="1680" alt="Screenshot 2025-05-12 at 05 04 54" src="https://github.com/user-attachments/assets/0cbc9c74-1a2e-48dd-9a55-569fa843d85f" />
+<img width="1680" alt="Screenshot 2025-05-12 at 05 12 44" src="https://github.com/user-attachments/assets/a2753511-3263-4fd3-80ab-75a2976bfb01" />
