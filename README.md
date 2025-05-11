@@ -19,7 +19,7 @@ Make sure you have installed the following prerequisites before proceeding:
 
 1. Clone this repository to your local machine:
 
-   `git clone https://github.com/vickyadriitravly.git`
+   `git clone https://github.com/vickyadrii/travly.git`
 
 2. Navigate to the project directory:
 
