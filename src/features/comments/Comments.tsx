@@ -1,8 +1,57 @@
+import { api } from "@/configs";
+import CommentList from "./components/CommentList";
+import { useCallback, useEffect, useState } from "react";
+import type { Comment } from "./types";
+import type { Meta } from "@/types";
+import { Spin } from "@/components/ui/spin";
+import { useLocation } from "react-router";
+
+export type List = {
+  data?: Comment[];
+  meta?: Meta;
+};
 
 const Comments = () => {
+  const [list, setList] = useState<List>({});
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+
+  const page = Number(searchParams.get("page")) || 1;
+  const pageSize = Number(searchParams.get("pageSize")) || 10;
+
+  const getCategories = useCallback(async () => {
+    try {
+      setIsLoading(true);
+      const res = await api.get("/api/comments", {
+        params: {
+          populate: "*",
+          "pagination[page]": page,
+          "pagination[pageSize]": pageSize,
+        },
+      });
+      setList(res);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(false);
+    }
+  }, [page, pageSize]);
+
+  useEffect(() => {
+    getCategories();
+  }, [getCategories]);
+
   return (
     <div>
-      <p>Comments</p>
+      {isLoading ? (
+        <div className="flex justify-center">
+          <Spin />
+        </div>
+      ) : (
+        <CommentList list={list} />
+      )}
     </div>
   );
 };
