@@ -64,6 +64,7 @@ const RegisterForm = () => {
       const res: responseSuccessAuthJSON = await api.post("/api/auth/local/register", values);
 
       setAccessToken(res.jwt);
+      localStorage.setItem('user-data', JSON.stringify(res.user));
       toast.success("Berhasil mendaftar!");
 
       setTimeout(() => {

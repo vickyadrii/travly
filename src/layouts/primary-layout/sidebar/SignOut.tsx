@@ -23,6 +23,7 @@ const SignOut = () => {
   const handleLogout = () => {
     toast("Berhasil keluar!");
     removeAccessToken();
+    localStorage.removeItem('user-data')
     setTimeout(() => {
       navigate("/");
     }, 1000);

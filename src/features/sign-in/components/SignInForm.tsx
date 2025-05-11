@@ -57,6 +57,7 @@ const SignInForm = () => {
       const res: responseSuccessAuthJSON = await api.post("/api/auth/local", values);
 
       setAccessToken(res.jwt);
+      localStorage.setItem('user-data', JSON.stringify(res.user));
       toast.success("Login successfully!");
 
       setTimeout(() => {
