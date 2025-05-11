@@ -3,6 +3,7 @@ import { Outlet, useLocation } from "react-router";
 import { Sidebar } from "./sidebar/Sidebar";
 import { MobileHeader } from "./header/MobileHeader";
 import { Header } from "./header/Header";
+import { Toaster } from "@/components/ui/sonner";
 
 const PrimaryLayout = () => {
   const location = useLocation();
@@ -12,12 +13,13 @@ const PrimaryLayout = () => {
     <>
       <MobileHeader />
       <Sidebar className="hidden lg:flex" />
-      <main className="lg:pl-64 h-full pt-14 lg:pt-0">
+      <div className="lg:pl-64 h-full pt-14 lg:pt-0">
         <Header />
         <div className="h-full p-5">
           <Outlet />
+          <Toaster />
         </div>
-      </main>
+      </div>
     </>
   );
 };

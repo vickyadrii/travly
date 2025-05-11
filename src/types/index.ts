@@ -3,3 +3,13 @@ export type SidebarItemType = {
   href: string;
   icon: React.ReactElement;
 };
+
+export type ResponseErrorJSON = {
+  response?: {
+    data?: {
+      error?: {
+        message: string;
+      };
+    };
+  };
+};

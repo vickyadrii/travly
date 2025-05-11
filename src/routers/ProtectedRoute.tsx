@@ -1,9 +1,10 @@
+import { getAccessToken } from "@/lib/utils";
 import { Navigate, Outlet } from "react-router";
 
 const ProtectedRoute = () => {
-  const sessionId = "12345";
+  const jwtToken = getAccessToken();
 
-  return sessionId ? <Outlet /> : <Navigate to="/" replace />;
+  return jwtToken ? <Outlet /> : <Navigate to="/" replace />;
 };
 
 export default ProtectedRoute;

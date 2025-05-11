@@ -2,7 +2,7 @@ import Cookie from "js-cookie";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
-const cookieKey = "bearer-token";
+const cookieKey = "jwt-token";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -16,7 +16,7 @@ export const setAccessToken = (token: string) => {
 
 export const getAccessToken = () => {
   const token = Cookie.get(cookieKey);
-  return token ?? null;
+  return token ?? '';
 };
 
 export const removeAccessToken = () => {

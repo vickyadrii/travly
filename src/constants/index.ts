@@ -3,7 +3,7 @@ import { BookOpen, ChartPie } from "lucide-react";
 export const SidebarItems = [
   {
     label: "Dashboard",
-    href: "/",
+    href: "/dashboard",
     icon: ChartPie,
   },
   {
