@@ -1,12 +1,16 @@
-import { Route, Routes } from "react-router"
-import { HomePage } from "../pages";
+import { Route, Routes } from "react-router";
+import { HomePage, ArticlesPage } from "@/pages";
+import PrimaryLayout from "@/layouts/primary-layout/PrimaryLayout";
 
 const Routers = () => {
-    return (
-        <Routes>
-            <Route path='/' element={<HomePage />} />
-        </Routes>
-    )
-}
+  return (
+    <Routes>
+      <Route path="/" element={<PrimaryLayout />}>
+        <Route index element={<HomePage />} />
+        <Route path="/articles" element={<ArticlesPage />} />
+      </Route>
+    </Routes>
+  );
+};
 
 export default Routers;

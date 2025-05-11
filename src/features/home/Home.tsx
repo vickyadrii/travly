@@ -5,7 +5,7 @@ const Home = () => {
   return (
     <div>
       <p>Home</p>
-      <Button>Button</Button>
+      <Button>dasdsad</Button>
     </div>
   );
 };
