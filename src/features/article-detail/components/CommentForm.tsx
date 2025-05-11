@@ -27,7 +27,6 @@ const FormSchema = z.object({
     .max(160, {
       message: "Comment must not be longer than 160 characters.",
     }),
-  article: z.number(),
 });
 
 const CommentForm = ({ id, refetch }: Props) => {
@@ -35,7 +34,6 @@ const CommentForm = ({ id, refetch }: Props) => {
     resolver: zodResolver(FormSchema),
     defaultValues: {
       content: "",
-      article: id ? id : 0,
     },
   });
 
@@ -46,7 +44,10 @@ const CommentForm = ({ id, refetch }: Props) => {
       try {
         setIsLoading(true);
         const res = await api.post("/api/comments", {
-          data: data,
+          data: {
+            content: data.content,
+            article: id
+          },
         });
         refetch();
         toast.success("Komentar berhasil ditambahkan.");
@@ -58,7 +59,7 @@ const CommentForm = ({ id, refetch }: Props) => {
         setIsLoading(false);
       }
     },
-    [refetch]
+    [refetch, id]
   );
 
   return (
