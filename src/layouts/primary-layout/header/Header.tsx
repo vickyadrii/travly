@@ -1,5 +1,3 @@
-import { ChevronDown } from "lucide-react";
-
 export const Header = () => {
   return (
     <div className="px-4 py-2.5 border-b w-full flex justify-end">
@@ -8,8 +6,6 @@ export const Header = () => {
           <h3 className="text-sm font-extrabold">Vicky Adri</h3>
           <p className="text-xs text-gray-600 font-medium">Hello, welcome back!</p>
         </div>
-
-        <ChevronDown className="w-4" />
       </button>
     </div>
   );
