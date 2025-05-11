@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router";
 import { HomePage, ArticlesPage } from "@/pages";
-import PrimaryLayout from "@/layouts/primary-layout/PrimaryLayout";
+import { PrimaryLayout } from "@/layouts/primary-layout";
 
 const Routers = () => {
   return (

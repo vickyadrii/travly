@@ -4,7 +4,7 @@ import { Sidebar } from "./sidebar/Sidebar";
 import { MobileHeader } from "./header/MobileHeader";
 import { Header } from "./header/Header";
 
-const MainLayout = () => {
+const PrimaryLayout = () => {
   return (
     <>
       <MobileHeader />
@@ -19,4 +19,4 @@ const MainLayout = () => {
   );
 };
 
-export default MainLayout;
+export default PrimaryLayout;
