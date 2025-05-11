@@ -58,10 +58,12 @@ const SignInForm = () => {
 
       setAccessToken(res.jwt);
       toast.success("Login successfully!");
-      navigate("/dashboard");
+
+      setTimeout(() => {
+        navigate("/dashboard");
+      }, 750);
     } catch (error) {
       const err = error as ResponseErrorJSON;
-      console.log(err);
 
       toast.error(err?.response?.data?.error?.message ?? "Oops Something Wrong!");
     } finally {

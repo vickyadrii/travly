@@ -15,13 +15,17 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import { removeAccessToken } from "@/lib/utils";
+import { toast } from "sonner";
 
 const SignOut = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
+    toast("Berhasil keluar!");
     removeAccessToken();
-    navigate("/");
+    setTimeout(() => {
+      navigate("/");
+    }, 1000);
   };
 
   return (
