@@ -1,4 +1,4 @@
-import { Outlet, useLocation } from "react-router";
+import { Outlet } from "react-router";
 
 import { Sidebar } from "./sidebar/Sidebar";
 import { MobileHeader } from "./header/MobileHeader";
@@ -6,9 +6,6 @@ import { Header } from "./header/Header";
 import { Toaster } from "@/components/ui/sonner";
 
 const PrimaryLayout = () => {
-  const location = useLocation();
-
-  console.log(location)
   return (
     <>
       <MobileHeader />
