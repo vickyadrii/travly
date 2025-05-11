@@ -1,9 +1,7 @@
+import { Articles } from "@/features";
+
 const ArticlesPage = () => {
-  return (
-    <div>
-      <p>ArticlesPage</p>
-    </div>
-  );
+  return <Articles />;
 };
 
 export default ArticlesPage;
