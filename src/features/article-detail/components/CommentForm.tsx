@@ -43,15 +43,15 @@ const CommentForm = ({ id, refetch }: Props) => {
     async (data: z.infer<typeof FormSchema>) => {
       try {
         setIsLoading(true);
-        const res = await api.post("/api/comments", {
+        await api.post("/api/comments", {
           data: {
             content: data.content,
             article: id
           },
         });
         refetch();
+        form.reset();
         toast.success("Komentar berhasil ditambahkan.");
-        console.log(res);
       } catch (err) {
         const error = err as ResponseErrorJSON;
         toast.error(error.response?.data?.error?.message ?? "Oops something wrong!");
