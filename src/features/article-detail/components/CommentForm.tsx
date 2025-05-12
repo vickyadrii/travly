@@ -59,7 +59,7 @@ const CommentForm = ({ id, refetch }: Props) => {
         setIsLoading(false);
       }
     },
-    [refetch, id]
+    [refetch, id, form]
   );
 
   return (
