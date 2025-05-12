@@ -35,3 +35,15 @@ export type Article = {
   title?: string;
   updatedAt?: Date;
 };
+
+export type CategorySelect = {
+  label: string;
+  value: number;
+};
+
+export type Params = {
+  populate: string;
+  "pagination[page]": number;
+  "pagination[pageSize]": number;
+  "filters[category][id]"?: number | null;
+};

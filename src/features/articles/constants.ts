@@ -1,6 +1,6 @@
-import type { Category } from "./types";
+import type { CategorySelect } from "./types";
 
-export const categories: Category[] = [
+export const categories: CategorySelect[] = [
   {
     label: "Pedesaan (Villages)",
     value: 42,

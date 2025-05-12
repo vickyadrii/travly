@@ -4,7 +4,7 @@ import axios from "axios";
 import { z } from "zod";
 import { toast } from "sonner";
 import { api } from "@/configs";
-import { categories } from "./constants";
+import { categories } from "../constants";
 import { useForm } from "react-hook-form";
 import { getAccessToken } from "@/lib/utils";
 import type { ResponseErrorJSON } from "@/types";

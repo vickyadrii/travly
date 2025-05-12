@@ -2,7 +2,34 @@ import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
-function Table({ className, ...props }: React.ComponentProps<"table">) {
+interface TableEmptyProps {
+  colSpan?: number;
+  message?: string;
+}
+
+function TableEmpty({ 
+  colSpan = 6, 
+  message = "Tidak ada data yang tersedai" 
+}: TableEmptyProps) {
+  return (
+    <tr>
+      <td 
+        colSpan={colSpan} 
+        className="text-center text-gray-600 p-4 bg-gray-50 font-medium"
+      >
+        {message}
+      </td>
+    </tr>
+  )
+}
+
+function Table({ 
+  className, 
+  children, 
+  ...props 
+}: React.ComponentProps<"table"> & { 
+  children: React.ReactNode 
+}) {
   return (
     <div
       data-slot="table-container"
@@ -12,7 +39,9 @@ function Table({ className, ...props }: React.ComponentProps<"table">) {
         data-slot="table"
         className={cn("w-full caption-bottom text-sm", className)}
         {...props}
-      />
+      >
+        {children}
+      </table>
     </div>
   )
 }
@@ -27,13 +56,33 @@ function TableHeader({ className, ...props }: React.ComponentProps<"thead">) {
   )
 }
 
-function TableBody({ className, ...props }: React.ComponentProps<"tbody">) {
+function TableBody({ 
+  className, 
+  children, 
+  isEmpty, 
+  emptyMessage,
+  colSpan,
+  ...props 
+}: React.ComponentProps<"tbody"> & { 
+  isEmpty?: boolean, 
+  emptyMessage?: string,
+  colSpan?: number
+}) {
   return (
     <tbody
       data-slot="table-body"
       className={cn("[&_tr:last-child]:border-0", className)}
       {...props}
-    />
+    >
+      {isEmpty ? (
+        <TableEmpty 
+          message={emptyMessage} 
+          colSpan={colSpan} 
+        />
+      ) : (
+        children
+      )}
+    </tbody>
   )
 }
 
@@ -111,4 +160,5 @@ export {
   TableRow,
   TableCell,
   TableCaption,
+  TableEmpty
 }

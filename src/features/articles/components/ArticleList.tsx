@@ -4,7 +4,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "react-router";
 import { PaginationWithLinks } from "@/components/ui/pagination-with-links";
-import { Eye, PencilLine } from "lucide-react";
+import { Eye } from "lucide-react";
 import DeleteButton from "./DeleteButton";
 
 
@@ -33,7 +33,7 @@ const ArticleList = ({ list, refetch }: Props) => {
             <TableHead className="text-center">Aksi</TableHead>
           </TableRow>
         </TableHeader>
-        <TableBody>
+        <TableBody isEmpty={data?.length === 0} emptyMessage="Tidak ada artikel yang tersedia">
           {data?.map((article) => (
             <TableRow key={article.documentId}>
               <TableCell className="w-40">
@@ -61,9 +61,9 @@ const ArticleList = ({ list, refetch }: Props) => {
                 {/* delete button */}
                 <DeleteButton documentID={article.documentId ?? ""} refetch={refetch} />
                 {/* edit button */}
-                <Button variant="outline-primary">
+                {/* <Button variant="outline-primary">
                   <PencilLine /> Ubah
-                </Button>
+                </Button> */}
               </TableCell>
             </TableRow>
           ))}
