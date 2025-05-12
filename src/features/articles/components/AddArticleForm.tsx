@@ -101,7 +101,6 @@ const AddArticleForm = ({ refetch, onClose }: Props) => {
       <Form {...form}>
         <form onSubmit={form.handleSubmit(handleOnSubmit)} className="space-y-8">
           <div className="space-y-4">
-
             {/* title */}
             <FormField
               control={form.control}
@@ -157,7 +156,10 @@ const AddArticleForm = ({ refetch, onClose }: Props) => {
                 <FormItem className="w-full">
                   <FormLabel>Kategori</FormLabel>
                   <FormControl>
-                    <Select onValueChange={(val) => field.onChange(Number(val))} value={String(field.value) || ""}>
+                    <Select
+                      onValueChange={(val) => field.onChange(Number(val))}
+                      value={field.value ? String(field.value) : undefined}
+                    >
                       <SelectTrigger>
                         <SelectValue placeholder="Pilih kategori" />
                       </SelectTrigger>
