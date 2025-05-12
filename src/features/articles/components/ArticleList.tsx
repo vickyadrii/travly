@@ -4,12 +4,16 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "react-router";
 import { PaginationWithLinks } from "@/components/ui/pagination-with-links";
+import { Eye, PencilLine } from "lucide-react";
+import DeleteButton from "./DeleteButton";
+
 
 type Props = {
   list: List;
+  refetch: () => void;
 };
 
-const ArticleList = ({ list }: Props) => {
+const ArticleList = ({ list, refetch }: Props) => {
   const { data, meta } = list;
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
@@ -23,10 +27,10 @@ const ArticleList = ({ list }: Props) => {
         <TableHeader>
           <TableRow>
             <TableHead className="w-[200px]">Cover</TableHead>
-            <TableHead className="w-[100px]"></TableHead>
+            <TableHead className="w-[400px]"></TableHead>
             <TableHead>Penulis</TableHead>
             <TableHead>Tanggal Rilis</TableHead>
-            <TableHead>Aksi</TableHead>
+            <TableHead className="text-center">Aksi</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -40,15 +44,25 @@ const ArticleList = ({ list }: Props) => {
                       : article.cover_image_url
                   }
                   alt={article.title}
-                  className="rounded h-28 w-full object-cover"
+                  className="rounded md:h-28 md:w-full w-[200px] object-cover"
                 />
               </TableCell>
               <TableCell className="font-bold">{article?.title}</TableCell>
-              <TableCell>{article?.user?.username}</TableCell>
+              <TableCell className="capitalize">{article?.user?.username}</TableCell>
               <TableCell>{dayjs(article?.publishedAt).format("DD MMMM YYYY")}</TableCell>
-              <TableCell>
-                <Button asChild variant="ghost">
-                  <Link to={`/articles/${article.documentId}`}>Lihat Detail</Link>
+              <TableCell className="text-center space-x-2">
+                {/* go to detail button */}
+                <Button asChild variant="outline">
+                  <Link to={`/articles/${article.documentId}`}>
+                    <Eye />
+                    Lihat
+                  </Link>
+                </Button>
+                {/* delete button */}
+                <DeleteButton documentID={article.documentId ?? ""} refetch={refetch} />
+                {/* edit button */}
+                <Button variant="outline-primary">
+                  <PencilLine /> Ubah
                 </Button>
               </TableCell>
             </TableRow>

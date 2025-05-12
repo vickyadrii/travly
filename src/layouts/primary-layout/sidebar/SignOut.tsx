@@ -23,35 +23,33 @@ const SignOut = () => {
   const handleLogout = () => {
     toast("Berhasil keluar!");
     removeAccessToken();
-    localStorage.removeItem('user-data')
+    localStorage.removeItem("user-data");
     setTimeout(() => {
       navigate("/");
     }, 1000);
   };
 
   return (
-    <div>
-      <AlertDialog>
-        <AlertDialogTrigger asChild>
-          <div className="absolute left-0 bottom-0 p-5">
-            <Button variant="destructive">
-              <LogOut />
-              Keluar
-            </Button>
-          </div>
-        </AlertDialogTrigger>
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>Notification</AlertDialogTitle>
-            <AlertDialogDescription>Apakah kamu yakin ingin keluar?</AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel>Batal</AlertDialogCancel>
-            <AlertDialogAction onClick={handleLogout}>Ok</AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
-    </div>
+    <AlertDialog>
+      <AlertDialogTrigger asChild>
+        <div className="absolute left-0 bottom-0 p-5">
+          <Button variant="destructive">
+            <LogOut />
+            Keluar
+          </Button>
+        </div>
+      </AlertDialogTrigger>
+      <AlertDialogContent>
+        <AlertDialogHeader>
+          <AlertDialogTitle>Notification</AlertDialogTitle>
+          <AlertDialogDescription>Apakah kamu yakin ingin keluar?</AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+          <AlertDialogCancel>Batal</AlertDialogCancel>
+          <AlertDialogAction onClick={handleLogout}>Ok</AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
   );
 };
 

@@ -5,6 +5,8 @@ import type { Article } from "./types";
 import type { Meta } from "@/types";
 import { Spin } from "@/components/ui/spin";
 import { useLocation } from "react-router";
+import { Button } from "@/components/ui/button";
+import { Plus } from "lucide-react";
 
 export type List = {
   data?: Article[];
@@ -50,7 +52,14 @@ const Articles = () => {
           <Spin />
         </div>
       ) : (
-        <ArticleList list={list} />
+        <div className="space-y-6">
+          <div className="flex justify-end">
+            <Button size='lg' variant='outline-primary'>
+              Tambah Artikel <span className="bg-primary text-white rounded-full"><Plus /></span>
+            </Button>
+          </div>
+          <ArticleList list={list} refetch={getArticles} />
+        </div>
       )}
     </div>
   );
