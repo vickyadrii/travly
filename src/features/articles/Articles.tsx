@@ -1,13 +1,14 @@
+import { useCallback, useEffect, useState } from "react";
+import { useLocation } from "react-router";
+
 import { api } from "@/configs";
 import ArticleList from "./components/ArticleList";
-import { useCallback, useEffect, useState } from "react";
 import type { Article } from "./types";
 import type { Meta, ResponseErrorJSON } from "@/types";
 import { Spin } from "@/components/ui/spin";
-import { useLocation } from "react-router";
-import { Button } from "@/components/ui/button";
-import { Plus } from "lucide-react";
+
 import { toast } from "sonner";
+import AddArticle from "./components/AddArticle";
 
 export type List = {
   data?: Article[];
@@ -55,11 +56,7 @@ const Articles = () => {
         </div>
       ) : (
         <div className="space-y-6">
-          <div className="flex justify-end">
-            <Button size='lg' variant='outline-primary'>
-              Tambah Artikel <span className="bg-primary text-white rounded-full"><Plus /></span>
-            </Button>
-          </div>
+          <AddArticle refetch={getArticles} />
           <ArticleList list={list} refetch={getArticles} />
         </div>
       )}
