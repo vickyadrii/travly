@@ -33,6 +33,11 @@ Make sure you have installed the following prerequisites before proceeding:
    # or
    pnpm install
    ```
+4. Create a .env file in the root directory and add the following:
+   ```bash
+   VITE_API_URL=api-url-domain.com
+   ```
+   Replace https://api-url-domain.com with the backend API URL.
 
 ## Usage
 
