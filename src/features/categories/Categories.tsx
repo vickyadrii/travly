@@ -2,8 +2,9 @@ import { api } from "@/configs";
 import CategoryList from "./components/CategoryList";
 import { useCallback, useEffect, useState } from "react";
 import type { Category } from "./types";
-import type { Meta } from "@/types";
+import type { Meta, ResponseErrorJSON } from "@/types";
 import { Spin } from "@/components/ui/spin";
+import { toast } from "sonner";
 
 export type List = {
   data?: Category[];
@@ -25,8 +26,9 @@ const Categories = () => {
         },
       });
       setList(res);
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      const error = err as ResponseErrorJSON;
+      toast.error(error.response?.data?.error?.message ?? "Oops something wrong!");
     } finally {
       setIsLoading(false);
     }

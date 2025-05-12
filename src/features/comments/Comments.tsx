@@ -1,10 +1,11 @@
 import { api } from "@/configs";
 import CommentList from "./components/CommentList";
 import { useCallback, useEffect, useState } from "react";
-import type { Meta } from "@/types";
+import type { Meta, ResponseErrorJSON } from "@/types";
 import { Spin } from "@/components/ui/spin";
 import { useLocation } from "react-router";
 import type { Comment } from "../articles/types";
+import { toast } from "sonner";
 
 export type List = {
   data?: Comment[];
@@ -32,8 +33,9 @@ const Comments = () => {
         },
       });
       setList(res);
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      const error = err as ResponseErrorJSON;
+      toast.error(error.response?.data?.error?.message ?? "Oops something wrong!");
     } finally {
       setIsLoading(false);
     }

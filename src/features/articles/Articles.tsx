@@ -2,11 +2,12 @@ import { api } from "@/configs";
 import ArticleList from "./components/ArticleList";
 import { useCallback, useEffect, useState } from "react";
 import type { Article } from "./types";
-import type { Meta } from "@/types";
+import type { Meta, ResponseErrorJSON } from "@/types";
 import { Spin } from "@/components/ui/spin";
 import { useLocation } from "react-router";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
+import { toast } from "sonner";
 
 export type List = {
   data?: Article[];
@@ -34,8 +35,9 @@ const Articles = () => {
         },
       });
       setList(res);
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      const error = err as ResponseErrorJSON;
+      toast.error(error.response?.data?.error?.message ?? "Oops something wrong!");
     } finally {
       setIsLoading(false);
     }
